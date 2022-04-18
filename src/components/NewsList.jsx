@@ -4,21 +4,26 @@ import axios from "axios";
 
 const NewsList = () => {
   const [articles, setArticles] = useState([]);
+  // const articles = [];
   const [loadMore, setLoadMore] = useState(4);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const getArticles = async () => {
       setLoading(true);
-      const response = await axios.get(
-        "https://newsapi.org/v2/top-headlines?country=in&apiKey=e1dddccd2050482d8b766badbef18689"
-      );
-      setLoading(false);
-
-      //start
-      console.log(response.data);
-      setArticles(response.data?.articles);
-      //end
+      try {
+        const response = await axios.get(
+          "https://newsapi.org/v2/top-headlines?country=in&apiKey=e1dddccd2050482d8b766badbef18689"
+        );
+        setLoading(false);
+  
+        //start
+        console.log(response.data);
+        setArticles(response.data?.articles);
+        //end
+      } catch(error) {
+        console.log("Sorry for interruption!", error.message)
+      }
     };
 
     //start
@@ -43,7 +48,9 @@ const NewsList = () => {
       {articles.length > 4 && articles.length !== loadMore && (
         <div
           className="cursor-pointer bg-red-600 px-4 py-2 rounded-full font-bold text-white text-sm max-w-max mx-auto my-8"
-          onClick={() => setLoadMore((prev) => prev + 4)}
+          onClick={function() {
+            setLoadMore(loadMore + 4)
+          }}
         >
           Load More
         </div>

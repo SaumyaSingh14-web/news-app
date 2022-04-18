@@ -7,13 +7,13 @@ const NewsCards = (props) => {
           <div className="flex flex-1">
             <img
               src={props.data.urlToImage ? props.data.urlToImage : errorImage}
-              alt={props.data?.source}
+              alt={props.data?.source.name}
               className="rounded-tl-xl"
             />
           </div>
           <div className="flex flex-1 flex-col border-t-2 border-gray-400 p-3 space-y-3">
             <p className="font-bold text-base">
-              {props.data?.content
+              {props.data?.title
                 ? props.data?.title?.substring(0, 40) + "..."
                 : "No Title"}
             </p>
