@@ -36,26 +36,43 @@ const NewsList = () => {
   ) : (
     // start
     <div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 justify-items-center pt-10">
-        {articles?.slice(0, loadMore)?.map((item, index) => {
-          return (
-            <div key={index}>
-              <NewsCards data={item} />
-            </div>
-          );
-        })}
-      </div>
-      {articles.length > 4 && articles.length !== loadMore && (
-        <div
-          className="cursor-pointer bg-red-600 px-4 py-2 rounded-full font-bold text-white text-sm max-w-max mx-auto my-8"
-          onClick={function() {
-            setLoadMore(loadMore + 4)
-          }}
-        >
-          Load More
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 justify-items-center pt-10">
+          {articles?.slice(0, loadMore)?.map((item, index) => {
+            return (
+              <div key={index}>
+                <NewsCards data={item} />
+              </div>
+            );
+          })}
         </div>
-      )}
-    </div>
+
+        <div className="flex justify-items-end">
+          {articles.length > 4 && articles.length !== loadMore && (
+          <div
+            className="cursor-pointer bg-red-600 px-4 py-2 rounded-full font-bold text-white text-sm max-w-max mx-auto my-8"
+            onClick={function() {
+              setLoadMore(loadMore + 4)
+            }}
+          >
+            Load More
+          </div>
+        )}
+        </div>
+      
+        <div className="flex justify-items-start">
+        {articles.length > 4 && articles.length >= loadMore && (
+          <div
+            className="cursor-pointer bg-red-600 px-4 py-2 rounded-full font-bold text-white text-sm max-w-max mx-auto my-8 justify-items-start"
+            onClick={function() {
+              setLoadMore(loadMore - 4)
+            }}
+          >
+            Load Less
+          </div> 
+        )}
+        </div>
+
+      </div>
     // end
   );
 };
