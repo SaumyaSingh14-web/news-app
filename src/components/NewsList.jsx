@@ -6,6 +6,7 @@ const NewsList = () => {
   const [articles, setArticles] = useState([]);
   // const articles = [];
   const [loadMore, setLoadMore] = useState(4);
+  const [loadLess, setLoadLess] = useState(4);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -60,11 +61,11 @@ const NewsList = () => {
         </div>
       
         <div className="flex justify-items-start">
-        {articles.length > 4 && articles.length >= loadMore && (
+        {articles.length < 4 && articles.length !== loadLess && (
           <div
             className="cursor-pointer bg-red-600 px-4 py-2 rounded-full font-bold text-white text-sm max-w-max mx-auto my-8 justify-items-start"
             onClick={function() {
-              setLoadMore(loadMore - 4)
+              setLoadLess(loadLess - 4)
             }}
           >
             Load Less
