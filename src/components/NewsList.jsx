@@ -46,10 +46,10 @@ const NewsList = () => {
           })}
         </div>
 
-        <div className="flex justify-items-end">
+        <div>
           {articles.length > 4 && articles.length !== loadMore && (
           <div
-            className="cursor-pointer bg-red-600 px-4 py-2 rounded-full font-bold text-white text-sm max-w-max mx-auto my-8"
+            className="cursor-pointer bg-red-600 px-4 py-2 rounded-full font-bold text-white text-sm max-w-max mx-auto my-8 "
             onClick={function() {
               setLoadMore(loadMore + 4)
             }}
@@ -59,7 +59,7 @@ const NewsList = () => {
         )}
         </div>
       
-        <div className="flex justify-items-start">
+        <div>
         {loadMore > 4 && (
           <div
             className="cursor-pointer bg-red-600 px-4 py-2 rounded-full font-bold text-white text-sm max-w-max mx-auto my-8 justify-items-start"
